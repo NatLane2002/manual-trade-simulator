@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trading Simulation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Slider toggle for theme in the top right -->
+  <label class="switch">
+    <input type="checkbox" id="theme-toggle">
+    <span class="slider"></span>
+  </label>
+
+  <h1>Trading Simulation</h1>
+  <div id="alert"></div>
+  <form id="simulationForm">
+    <label>Risk per trade ($):
+      <input type="number" id="riskPerTrade" placeholder="Enter risk per trade">
+    </label>
+    <label>Number of trades:
+      <input type="number" id="numTrades" placeholder="Enter number of trades">
+    </label>
+    <label>Losing Trade Percentage:
+      <input type="number" id="losePct" placeholder="Enter losing trade percentage">
+    </label>
+    
+    <label>Number of Win Types:
+      <select id="winTypeCount">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </label>
+    
+    <!-- Container for dynamic win type inputs -->
+    <div id="winTypesContainer"></div>
+    
+    <div class="button-container">
+      <button type="button" onclick="runSimulation()">Run Simulation</button>
+      <button type="button" onclick="resetSimulation()">Reset</button>
+    </div>
+  </form>
+
+  <!-- Output box is hidden by default -->
+  <div id="output"></div>
+  
+  <!-- Container for Equity Curve Graph (hidden by default) -->
+  <div id="chart-container" style="display:none; width: 100%; max-width: 400px; margin-top:20px;">
+    <canvas id="equityCurve"></canvas>
+    <!-- Graph control buttons -->
+    <div id="graph-controls" class="graph-controls">
+      <button type="button" id="open-new-tab-btn">Open in New Tab</button>
+      <button type="button" id="toggle-fs-btn">Toggle Full Screen</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
